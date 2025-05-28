@@ -1,16 +1,10 @@
+import Glide from '@glidejs/glide';
+import '../css/styles.css';
+
 const allSections = document.querySelectorAll('.section');
 const navbarList = document.querySelector('.navbar__list');
 const btnLearnMore = document.querySelector('.btn__learn-more');
 const navHeight = 100;
-
-// Handling cursor animation
-window.onload = function () {
-    setTimeout(function () {
-        const element = document.querySelector('.typing-animation');
-        element.style.animation = 'none';
-        element.style.borderRight = '.15em solid transparent';
-    }, 2500);
-};
 
 const revealSection = (entries) => {
     entries.forEach(entry => {
@@ -96,25 +90,17 @@ function handleRedirect(elementClass, url) {
     });
 }
 
-// Project redirects
-handleRedirect('project__gallery', 'https://gallery.wpdevelopment.org');
-handleRedirect('project__todo', 'https://notes.wpdevelopment.org');
-handleRedirect('project__weather', 'https://weather.wpdevelopment.org');
 
 // Certificate redirects
-handleRedirect('link__cert-basic', 'images/js-basics.pdf');
-handleRedirect('link__cert-fundamentals', 'images/js-fundamentals.pdf');
-handleRedirect('link__cert-advanced', 'images/js-advanced.pdf');
+handleRedirect('link__cert-ps', 'images/ps-cert.pdf');
+handleRedirect('link__cert-ui', 'images/ui-cert.pdf');
+handleRedirect('link__cert-ux', 'images/ux-cert.pdf');
+handleRedirect('link__cert-indesign', 'images/indesign-cert.pdf');
 
 // Social icon redirects
 handleRedirect('social__fb', 'https://www.facebook.com/emanuil.kostadinov.9');
 handleRedirect('social__x', 'https://x.com/emanuilko');
 handleRedirect('social__linkedin', 'https://linkedin.com/in/emanuil-kostadinov-330bba135');
-
-// GitHub redirects
-handleRedirect('link__gallery', 'https://github.com/l1uname/image-gallery-app');
-handleRedirect('link__notes', 'https://github.com/l1uname/to-do-notes-app');
-handleRedirect('link__weather', 'https://github.com/l1uname/weather-app');
 
 // Google reCaptcha
 document.getElementById('submitBtn').addEventListener('click', function (e) {
@@ -134,3 +120,20 @@ window.recaptchaCallback = function () {
     document.getElementById('recaptchaBorder').classList.remove('border-warning');
     document.getElementById('submitBtn').disabled = false;
 }
+
+new Glide('.glide', {
+    type: 'carousel',
+    perView: 3,
+    focusAt: 'center',
+    gap: 20,
+    autoplay: 3000,
+    hoverpause: true,
+    breakpoints: {
+        1024: {
+            perView: 2,
+        },
+        600: {
+            perView: 1,
+        },
+    },
+}).mount();

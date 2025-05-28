@@ -1,3 +1,43 @@
+@import '@glidejs/glide/dist/css/glide.core.min.css';
+@import '@glidejs/glide/dist/css/glide.theme.min.css';
+
+.glide__arrow {
+    background-color: #333;
+    color: white;
+    border-radius: 50%;
+    /* Add more styling as needed */
+}
+
+.glide__arrow:hover {
+    background-color: #555;
+}
+
+/* Example: Style the bullets */
+.glide__bullet {
+    background-color: lightgray;
+    border: 2px solid lightgray;
+    width: 12px;
+    height: 12px;
+    /* ... other styles for shape, size, etc. */
+}
+
+.glide__bullet--active {
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+/* Style for your slide content */
+.glide__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    height: 200px; /* Example height for your slides */
+    color: #333;
+    font-size: 24px;
+    border-radius: 8px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -30,7 +70,7 @@ html, body {
     height: 100px;
     width: 100%;
     padding: 0 6rem;
-    z-index: 1;
+    z-index: 10;
     position: sticky;
     top: 0;
 }
@@ -111,25 +151,7 @@ html, body {
 
 .section {
     position: relative;
-    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
     overflow: hidden;
-}
-
-.section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
-    opacity: 1;
-    transition: opacity 1.2s ease-out;
-    pointer-events: none;
-}
-
-.section.revealed::before {
-    opacity: 0;
 }
 
 .section__intro {
@@ -167,7 +189,7 @@ html, body {
     font-weight: 500;
     border: none;
     border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
+    padding-top: 20px;
     cursor: pointer;
     transition: all 0.3s;
     opacity: 0;
@@ -178,8 +200,20 @@ html, body {
     pointer-events: none;
 }
 
-.btn__learn-more:hover {
-    color: #48D1CC;
+.btn__learn-more .arrow {
+    display: inline-block;
+    font-size: 2.3rem;
+}
+
+.btn__learn-more:hover .arrow {
+    animation: bounceArrow 0.6s ease-out 1;
+}
+
+@keyframes bounceArrow {
+    0%   { transform: translateY(0); }
+    30%  { transform: translateY(-6px); }
+    60%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -201,14 +235,13 @@ html, body {
 .section__projects {
     background: linear-gradient(to bottom, #F2EAF7 0%, #D7BDE2 40%, #ffffff 60%, #ffffff 100%);
     width: 100%;
-    height: calc(100vh);
+    min-height: calc(100vh);
     box-sizing: border-box;
 }
 
 .section__about-me {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     background-color: #f4f4f4;
     display: flex;
@@ -224,7 +257,7 @@ html, body {
     top: -30%;
     left: -50%;
     width: 160vw;
-    height: 50%;
+    height: 45%;
     z-index: 1;
     opacity: 0.9;
     background: linear-gradient(to right,
@@ -255,6 +288,8 @@ html, body {
     padding: 0 20px;
     flex: 1;
     max-width: 600px;
+    font-family: "Inter", serif;
+    font-optical-sizing: auto;
     font-size: 1.5rem;
     line-height: 1.6;
     color: #333;
@@ -271,15 +306,6 @@ html, body {
     font-size: 3em;
     color: #333;
     margin-bottom: 20px;
-    user-select: none;
-}
-
-.message__about-me p {
-    font-size: 1.3em;
-    color: #667;
-    line-height: 1.8;
-    font-family: Arial, sans-serif;
-    letter-spacing: 0.5px;
     user-select: none;
 }
 
@@ -414,19 +440,8 @@ html, body {
     background-color: #595959;
 }
 
-.section__certifications {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-}
-
 .project__github {
     font-size: 10px;
-}
-
-.certificates {
-    margin: -50px;
 }
 
 .swiper-wrapper {
@@ -435,12 +450,20 @@ html, body {
     align-items: center;
 }
 
+.section__certifications {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+
+
 .certificates img {
-    display: block;
-    margin: 0 auto;
-    transition: opacity 0.1s ease-in-out;
-    width: 70%;
+    max-width: 100%;
     height: auto;
+    width: 380px;
 }
 
 .certificates img:hover {

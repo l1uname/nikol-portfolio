@@ -8,7 +8,9 @@
     <link href="css/styles.css" rel="stylesheet">
     <script defer src="js/main.js" type="module"></script>
     <script async defer src="https://www.google.com/recaptcha/api.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -47,56 +49,53 @@
                 <img alt="InDesign logo" class="social-icons" src="images/indesign.png">
             </div>
             <span>
-                <button class="btn__learn-more">Learn more &DownArrow;</button>
+                <button class="btn__learn-more">Learn more <span class="arrow">&DownArrow;</span></button>
             </span>
         </div>
     </section>
 
-    <!-- Projects section -->
-    <section class="section section__projects" data-nav-link="#projects">
-        <div class="project project__gallery">
-            <h1 class="project__title">Image Gallery</h1>
-            <img alt="gallery.png" class="project-image" src="images/gallery.png">
-            <div class="project__tech-logos">
-                <img alt="js-logo.png" class="tech-logo" src="images/js-logo.jpg">
-                <img alt="html.png" class="tech-logo" src="images/html.png">
-                <img alt="css.png" class="tech-logo" src="images/css.png">
-            </div>
-            <button class="project__github link__gallery">GitHub: https://github.com/l1uname/image-gallery-app</button>
+    <div class="glide">
+        <div class="glide__track" data-glide-el="track">
+            <ul class="glide__slides">
+                <li class="glide__slide">Slide 1</li>
+                <li class="glide__slide">Slide 2</li>
+                <li class="glide__slide">Slide 3</li>
+                <li class="glide__slide">Slide 4</li>
+                <li class="glide__slide">Slide 5</li>
+            </ul>
         </div>
-        <div class="project project__todo">
-            <h1 class="project__title">To-Do List App</h1>
-            <img alt="notes.png" class="project-image" src="images/notes.png">
-            <div class="project__tech-logos">
-                <img alt="js-logo.png" class="tech-logo" src="images/js-logo.jpg">
-                <img alt="html.png" class="tech-logo" src="images/html.png">
-                <img alt="css.png" class="tech-logo" src="images/css.png">
-            </div>
-            <button class="project__github link__notes">GitHub: https://github.com/l1uname/to-do-notes-app</button>
+
+        <div class="glide__arrows" data-glide-el="controls">
+            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                prev
+            </button>
+            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                next
+            </button>
         </div>
-        <div class="project project__weather">
-            <h1 class="project__title">Weather App</h1>
-            <img alt="weather.png" class="project-image" src="images/weather.png">
-            <div class="project__tech-logos">
-                <img alt="react.png" class="tech-logo" src="images/react.png">
-                <img alt="js-logo.png" class="tech-logo" src="images/js-logo.jpg">
-                <img alt="html.png" class="tech-logo" src="images/html.png">
-                <img alt="css.png" class="tech-logo" src="images/css.png">
-            </div>
-            <button class="project__github link__weather">GitHub: https://github.com/l1uname/weather-app</button>
+
+        <div class="glide__bullets" data-glide-el="controls[nav]">
+            <button class="glide__bullet" data-glide-dir="=0"></button>
+            <button class="glide__bullet" data-glide-dir="=1"></button>
+            <button class="glide__bullet" data-glide-dir="=2"></button>
+            <button class="glide__bullet" data-glide-dir="=3"></button>
+            <button class="glide__bullet" data-glide-dir="=4"></button>
         </div>
-    </section>
+    </div>
 
     <!-- Certifications -->
     <section class="section section__certifications" data-nav-link="#certifications">
-        <div class="certificates link__cert-basic">
-            <img alt="js-basics.png" src="images/js-basics.png">
+        <div class="certificates link__cert-ps">
+            <img alt="Photoshop Certificate" src="images/ps.png">
         </div>
-        <div class="certificates link__cert-fundamentals">
-            <img alt="js-fundamentals.png" src="images/js-fundamentals.png">
+        <div class="certificates link__cert-ui">
+            <img alt="UI Certificate" src="images/ui.png">
         </div>
-        <div class="certificates link__cert-advanced">
-            <img alt="js-advanced.png" src="images/js-advanced.png">
+        <div class="certificates link__cert-ux">
+            <img alt="UX Certificate" src="images/ux.png">
+        </div>
+        <div class="certificates link__cert-indesign">
+            <img alt="InDesign Certificate" src="images/indesign-cert.png">
         </div>
     </section>
 
