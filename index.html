@@ -23,7 +23,12 @@
     <!-- Navigation bar -->
     <nav class="navbar">
         <h1>Nikol Kostadinova</h1>
-        <ul class="navbar__list">
+        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="navbar__list" id="mobile-navigation-list" aria-hidden="true" role="menu">
             <li><a href="#about-me">About me</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#certifications">Certifications</a></li>

@@ -23,6 +23,10 @@ html, body {
     overflow-x: hidden;
 }
 
+body.menu-open {
+    overflow: hidden;
+}
+
 .navbar {
     background-color: #ffffff;
     border-bottom: 1px solid #000;
@@ -32,12 +36,14 @@ html, body {
     height: 100px;
     width: 100%;
     padding: 0 6rem;
+    gap: 24px;
     z-index: 10;
     position: sticky;
     top: 0;
+    box-sizing: border-box;
 }
 
-.navbar h1 {
+.navbar__title {
     color: #333;
     font-size: 2rem;
     font-family: 'Roboto', sans-serif;
@@ -46,41 +52,25 @@ html, body {
     user-select: none;
 }
 
-.navbar__list a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    display: block;
-    right: 50%;
-    background: #264de4;
-    transition: width .3s ease, right .3s ease;
-    margin-top: 10px;
-    pointer-events: none;
-}
-
-.navbar__list a.active {
-    color: #264de4;
-}
-
-.navbar__list a.active::after {
-    width: 100%;
-    right: 0;
-}
-
 .navbar__list {
     display: flex;
+    gap: 24px;
     align-items: center;
     list-style: none;
     color: #667;
+    margin: 0;
+    padding: 0;
 }
 
 .navbar__list li {
-    margin-left: 4rem;
     font-size: 1.7rem;
     color: black;
     cursor: pointer;
     position: relative;
+}
+
+.navbar__list a {
+    white-space: nowrap;
 }
 
 .navbar__list li::after {
@@ -110,6 +100,152 @@ html, body {
     padding-bottom: 20px;
     text-decoration: none;
 }
+
+.navbar__list a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    display: block;
+    right: 50%;
+    background: #264de4;
+    transition: width .3s ease, right .3s ease;
+    margin-top: 10px;
+    pointer-events: none;
+}
+
+.navbar__list a.active {
+    color: #264de4;
+}
+
+.navbar__list a.active::after {
+    width: 100%;
+    right: 0;
+}
+
+.kebab-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+}
+
+.kebab-icon {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25px;
+    height: 20px;
+}
+
+.kebab-icon .dot {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 2px 0;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .navbar {
+        padding: 0 2rem;
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 100px;
+    }
+
+    .navbar__title {
+        flex-grow: 1;
+    }
+
+    .kebab-menu-toggle {
+        display: block;
+    }
+
+    .navbar__list {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #000;
+        background-color: #fff;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .navbar__list.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .navbar__list li {
+        margin: 0;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .navbar__list li:last-child {
+        border-bottom: none;
+    }
+
+    .navbar__list li a {
+        padding: 0.5rem;
+        display: block;
+    }
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 24px;
+    height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger .bar {
+    height: 3px;
+    width: 100%;
+    background-color: #333;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+}
+
+@media (max-width: 900px) {
+    .hamburger {
+        display: flex;
+    }
+}
+
 
 .section {
     position: relative;

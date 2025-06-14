@@ -223,3 +223,46 @@ if (inDesignCert) {
         window.open('images/indesign-cert.pdf', '_blank');
     })
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const navList = document.querySelector('.navbar__list');
+    const navLinks = document.querySelectorAll('.navbar__list a');
+
+    if (hamburger && navList) {
+        hamburger.addEventListener('click', () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+
+            hamburger.classList.toggle('active');
+            navList.classList.toggle('active');
+            document.body.classList.toggle('menu-open');
+
+            hamburger.setAttribute('aria-expanded', String(!isExpanded));
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navList.classList.contains('active')) {
+                    navList.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.classList.remove('menu-open');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (navList.classList.contains('active') &&
+                !navList.contains(event.target) &&
+                !hamburger.contains(event.target)) {
+                navList.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.classList.remove('menu-open');
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+
+        const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.documentElement.style.setProperty('--scrollbar-width', `${scrollBarWidth}px`);
+    }
+});
