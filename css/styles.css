@@ -1,43 +1,6 @@
 @import '@glidejs/glide/dist/css/glide.core.min.css';
 @import '@glidejs/glide/dist/css/glide.theme.min.css';
 
-.glide__arrow {
-    background-color: #333;
-    color: white;
-    border-radius: 50%;
-    /* Add more styling as needed */
-}
-
-.glide__arrow:hover {
-    background-color: #555;
-}
-
-/* Example: Style the bullets */
-.glide__bullet {
-    background-color: lightgray;
-    border: 2px solid lightgray;
-    width: 12px;
-    height: 12px;
-    /* ... other styles for shape, size, etc. */
-}
-
-.glide__bullet--active {
-    background-color: dodgerblue;
-    border-color: dodgerblue;
-}
-
-/* Style for your slide content */
-.glide__slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f0f0;
-    height: 200px; /* Example height for your slides */
-    color: #333;
-    font-size: 24px;
-    border-radius: 8px;
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -62,8 +25,7 @@ html, body {
 
 .navbar {
     background-color: #ffffff;
-    border-bottom: 1px solid #e7e7e7;
-    box-shadow: 0px 2px 4px rgba(75, 187, 125, 0.2);
+    border-bottom: 1px solid #000;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -182,30 +144,52 @@ html, body {
 }
 
 .btn__learn-more {
+    position: relative;
     background: none;
     font-size: 2rem;
     font-family: inherit;
     color: #264de4;
     font-weight: 500;
     border: none;
-    border-bottom: 1px solid currentColor;
     padding-top: 20px;
     cursor: pointer;
-    transition: all 0.3s;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-    animation-delay: 0.3s;
-    display: block;
     user-select: none;
-    pointer-events: none;
+    display: block;
 }
 
-.btn__learn-more .arrow {
+.btn__learn-more::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: currentColor;
+    border-radius: inherit;
+    transition: width 0.35s ease;
+    z-index: 1;
+}
+
+.btn__learn-more:hover::after {
+    width: 100%;
+}
+
+.btn__learn-more--wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn__learn-more--wrapper .arrow {
+    color: #264de4;
+    align-self: flex-end;
     display: inline-block;
     font-size: 2.3rem;
 }
 
-.btn__learn-more:hover .arrow {
+.btn__learn-more--wrapper:hover .arrow {
     animation: bounceArrow 0.6s ease-out 1;
 }
 
@@ -231,18 +215,15 @@ html, body {
     height: 40px;
 }
 
-.section__certifications,
-.section__projects {
+.section__certifications {
     background: linear-gradient(to bottom, #F2EAF7 0%, #D7BDE2 40%, #ffffff 60%, #ffffff 100%);
     width: 100%;
-    min-height: calc(100vh);
     box-sizing: border-box;
 }
 
 .section__about-me {
     position: relative;
     overflow: hidden;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     background-color: #f4f4f4;
     display: flex;
     height: calc(100vh - 100px);
@@ -332,10 +313,12 @@ html, body {
 }
 
 .section__projects {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding: 80px 0px 100px;
 }
 
 .project {
@@ -343,7 +326,7 @@ html, body {
     height: calc(100% - 100px);
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Added this line */
+    justify-content: center;
     align-items: center;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -394,12 +377,10 @@ html, body {
     object-fit: contain;
 }
 
-.project-image {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    transition: opacity .3s ease;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+.project-image:hover,
+.certificates img:hover {
+    transform: scale(1.02);
+    opacity: 0.8;
 }
 
 .project__github {
@@ -452,22 +433,35 @@ html, body {
 
 .section__certifications {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 60px 20px;
+}
+
+.section__certifications--wrapper {
+    display: flex;
     gap: 20px;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 40px;
+    padding: 40px 20px;
 }
 
 
 .certificates img {
     max-width: 100%;
     height: auto;
-    width: 380px;
+    width: 340px;
 }
 
-.certificates img:hover {
-    opacity: 0.7;
+.section__title {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 1.8rem;
+    line-height: 46px;
+    text-transform: uppercase;
 }
 
 .wrapper__social-icons {
@@ -499,7 +493,7 @@ html, body {
     align-items: center;
     height: calc(100vh - 100px);
     padding: 2rem;
-    background-color: rgba(94, 197, 118, 0.22);
+    background-color: #F5F5F5;
 }
 
 .contact-form-container {
@@ -513,6 +507,7 @@ html, body {
 .contact-form {
     display: flex;
     flex-direction: column;
+    font-family: 'Roboto', sans-serif;
     max-width: 800px;
     margin-bottom: 4rem;
     background-color: #fff;
@@ -559,6 +554,11 @@ html, body {
     background-color: #1a2f80;
 }
 
+.form-input:focus {
+    border: 2px solid #A259FF;
+    outline: none;
+}
+
 .g-recaptcha {
     display: flex;
     justify-content: center;
@@ -581,7 +581,6 @@ html, body {
     border: 1px solid red;
 }
 
-
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
@@ -602,5 +601,70 @@ html, body {
     50% {
         border-radius: 60% 40% 45% 55% / 40% 45% 55% 60%;
         transform: translateX(30%) scale(1.1);
+    }
+}
+
+.glide__arrow {
+    position: absolute;
+    overflow: hidden;
+    background-color: #555555;
+    color: white;
+    border-radius: 50%;
+}
+
+.glide__arrow:hover {
+    background-color: #444444;
+}
+
+.glide__bullet {
+    background-color: lightgray;
+    border: 2px solid lightgray;
+    width: 12px;
+    height: 12px;
+}
+
+.glide__bullet--active {
+    background-color: dodgerblue;
+    border-color: dodgerblue;
+}
+
+.glide__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    overflow: hidden;
+    color: #333;
+    font-size: 24px;
+}
+
+.glide__bullet--active {
+    background-color: #A259FF;
+    border: none;
+}
+
+.glide__bullet--active:hover {
+    background-color: #A259FF;
+}
+
+.ripple {
+    position: absolute;
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple-animation 0.6s linear;
+    background-color: #6FA3C8;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+@media (max-width: 1500px) {
+    .certificates img {
+        width: 300px;
     }
 }

@@ -3,15 +3,12 @@ import '../css/styles.css';
 
 const allSections = document.querySelectorAll('.section');
 const navbarList = document.querySelector('.navbar__list');
-const btnLearnMore = document.querySelector('.btn__learn-more');
+const btnLearnMore = document.querySelector('.btn__learn-more--wrapper');
 const navHeight = 100;
 
 const revealSection = (entries) => {
     entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-
-        // Revealing section
-        entry.target.classList.add('revealed');
 
         // Get the href of the navbar link from the data-nav-link attribute
         const navLinkHref = entry.target.dataset.navLink;
@@ -53,18 +50,13 @@ function checkWindowSize() {
 }
 
 checkWindowSize();
-window.addEventListener('resize', checkWindowSize);
 
 // Handling smooth scrolling
 const handleSmoothScroll = (e, sectionSelector) => {
     e.preventDefault();
-    const sectionId = document.querySelector(sectionSelector);
-    const sectionCoords = sectionId.getBoundingClientRect();
-    window.scrollTo({
-        left: sectionCoords.left + window.pageXOffset,
-        top: sectionCoords.top + window.pageYOffset,
-        behavior: 'smooth'
-    });
+    const section = document.querySelector(sectionSelector);
+    const top = section.getBoundingClientRect().top + window.pageYOffset - navHeight;
+    window.scrollTo({ top, left: 0, behavior: 'smooth' });
 };
 
 // Event Listener for navbar links
@@ -77,30 +69,29 @@ navbarList.addEventListener('click', function (e) {
 
 // Event Listener for "Learn more" button
 btnLearnMore.addEventListener('click', function (e) {
-    handleSmoothScroll(e, '.section__about-me');
+    handleSmoothScroll(e, '.section__projects');
 });
 
 // Handle redirects
 function handleRedirect(elementClass, url) {
-    document.querySelector(`.${elementClass}`).addEventListener('click', function () {
+    document.querySelector(`${elementClass}`).addEventListener('click', function () {
         window.open(url, '_blank');
     });
-    document.querySelector(`.${elementClass}`).addEventListener('click', function (e) {
+    document.querySelector(`${elementClass}`).addEventListener('click', function (e) {
         e.stopPropagation();
     });
 }
 
 
 // Certificate redirects
-handleRedirect('link__cert-ps', 'images/ps-cert.pdf');
-handleRedirect('link__cert-ui', 'images/ui-cert.pdf');
-handleRedirect('link__cert-ux', 'images/ux-cert.pdf');
-handleRedirect('link__cert-indesign', 'images/indesign-cert.pdf');
+handleRedirect('.link__cert-ps', 'images/ps-cert.pdf');
+handleRedirect('.link__cert-ui', 'images/ui-cert.pdf');
+handleRedirect('.link__cert-ux', 'images/ux-cert.pdf');
+handleRedirect('.link__cert-indesign', 'images/indesign-cert.pdf');
 
 // Social icon redirects
-handleRedirect('social__fb', 'https://www.facebook.com/emanuil.kostadinov.9');
-handleRedirect('social__x', 'https://x.com/emanuilko');
-handleRedirect('social__linkedin', 'https://linkedin.com/in/emanuil-kostadinov-330bba135');
+handleRedirect('.social__fb', 'https://www.facebook.com/nikol.marinova');
+handleRedirect('.social__linkedin', 'https://www.linkedin.com/in/nikol-kostadinova-7400a7317/');
 
 // Google reCaptcha
 document.getElementById('submitBtn').addEventListener('click', function (e) {
@@ -121,12 +112,12 @@ window.recaptchaCallback = function () {
     document.getElementById('submitBtn').disabled = false;
 }
 
-new Glide('.glide', {
+const glide = new Glide('.glide', {
     type: 'carousel',
     perView: 3,
     focusAt: 'center',
-    gap: 20,
-    autoplay: 3000,
+    gap: 30,
+    autoplay: 0,
     hoverpause: true,
     breakpoints: {
         1024: {
@@ -136,4 +127,32 @@ new Glide('.glide', {
             perView: 1,
         },
     },
-}).mount();
+})
+
+glide.mount();
+
+document.querySelector('.glide__slides').addEventListener('click', function (e) {
+    const classList = e.target.classList;
+
+    switch (true) {
+        case classList.contains('figma-mood-board'):
+            window.open('https://www.figma.com/design/yhxr6IvVPmfLYAcYxtcDl0/Untitled?node-id=0-1&t=HSgixq9fCVNsThqy-1', '_blank');
+            break;
+        case classList.contains('figma-project'):
+            window.open('https://www.figma.com/design/LoKproPtwO0NLIaPvfzFxp/UI-Exam-2025?node-id=21-133&p=f&t=zeCV8E8Hk5zr45e6-0', '_blank');
+            break;
+        case classList.contains('project-image--1'):
+            window.open('images/project1.jpg', '_blank');
+            break;
+        case classList.contains('project-image--2'):
+            window.open('images/project2.png', '_blank');
+            break;
+        case classList.contains('project-image--3'):
+            window.open('images/project3.jpg', '_blank');
+            break;
+        case classList.contains('project-image--4'):
+            window.open('images/project4.jpg', '_blank');
+            break;
+    }
+});
+

@@ -11,6 +11,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
 </head>
 <body>
 
@@ -29,17 +32,12 @@
     </nav>
 
     <!-- About me -->
-    <section class="section__about-me" data-nav-link="#about-me">
+    <section class="section section__about-me" data-nav-link="#about-me">
         <div class="section__about-me--wrapper">
             <div class="message__about-me">
                 <img alt="avatar.jpeg" class="avatar-image" src="images/s9S50Io5.jpeg">
                 <p class="section_about-me__description">
-                    Hi, I'm Emanuil Kostadinov. For over six years now, I have been working in a top web
-                    hosting company learning a lot about Linux OS, DNS, MySQL, web servers, WordPress, PHP and other
-                    technologies.
-                    In the past few years, I've also been learning to code. I've got an advanced JavaScript certification
-                    from SoftUni (Software University Ltd)
-                    and have gained experience with JavaScript and React.
+                    Former violinist at State Opera Plovdiv, I’m Nikol Kostadinova, now pursuing web design and development. I have completed several courses at SoftUni, including Photoshop, Figma, UI Design, UX Design, and InDesign. I’m passionate about creating intuitive and beautiful digital experiences and continuously expanding my skills in both design and front-end development.
                 </p>
             </div>
             <div class="wrapper__tools-icons">
@@ -48,61 +46,95 @@
                 <img alt="Illustrator logo" class="social-icons" src="images/illustrator.svg">
                 <img alt="InDesign logo" class="social-icons" src="images/indesign.png">
             </div>
-            <span>
-                <button class="btn__learn-more">Learn more <span class="arrow">&DownArrow;</span></button>
+            <span class="btn__learn-more--wrapper">
+                <button class="btn__learn-more">Learn more</button>
+                <span class="arrow">&DownArrow;</span>
             </span>
         </div>
     </section>
 
-    <div class="glide">
-        <div class="glide__track" data-glide-el="track">
-            <ul class="glide__slides">
-                <li class="glide__slide">Slide 1</li>
-                <li class="glide__slide">Slide 2</li>
-                <li class="glide__slide">Slide 3</li>
-                <li class="glide__slide">Slide 4</li>
-                <li class="glide__slide">Slide 5</li>
-            </ul>
-        </div>
+    <!-- Projects -->
+    <section id="projects"  class="section section__projects" data-nav-link="#projects">
+        <h1 class="section__title">My Projects</h1>
+        <div class="glide">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                    <li class="glide__slide">
+                        <div class="slide-content">
+                            <img class="figma-mood-board project-image" src="images/thumb-figma-mood-board.png" alt="Slide 1 image">
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-content">
+                            <img class="project-image--1 project-image" src="images/thumb-project1.jpg" alt="Slide 1 image">
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-content">
+                            <img class="figma-project project-image" src="images/thumb-figma-project.png" alt="Slide 1 image">
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-content">
+                            <img class="project-image--2 project-image" src="images/thumb-project2.png" alt="Slide 1 image">
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-content">
+                            <img class="project-image--3 project-image" src="images/thumb-project3.jpg" alt="Slide 1 image">
+                        </div>
+                    </li>
+                    <li class="glide__slide">
+                        <div class="slide-content">
+                            <img class="project-image--4 project-image" src="images/thumb-project4.jpg" alt="Slide 1 image">
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-        <div class="glide__arrows" data-glide-el="controls">
-            <button class="glide__arrow glide__arrow--left" data-glide-dir="<">
-                prev
-            </button>
-            <button class="glide__arrow glide__arrow--right" data-glide-dir=">">
-                next
-            </button>
-        </div>
+            <div class="glide__arrows" data-glide-el="controls">
+                <div class="glide__arrow glide__arrow--left" data-glide-dir="<">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+                </div>
+                <div class="glide__arrow glide__arrow--right" data-glide-dir=">">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#fff"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                </div>
+            </div>
 
-        <div class="glide__bullets" data-glide-el="controls[nav]">
-            <button class="glide__bullet" data-glide-dir="=0"></button>
-            <button class="glide__bullet" data-glide-dir="=1"></button>
-            <button class="glide__bullet" data-glide-dir="=2"></button>
-            <button class="glide__bullet" data-glide-dir="=3"></button>
-            <button class="glide__bullet" data-glide-dir="=4"></button>
+            <div class="glide__bullets" data-glide-el="controls[nav]">
+                <button class="glide__bullet" data-glide-dir="=0"></button>
+                <button class="glide__bullet" data-glide-dir="=1"></button>
+                <button class="glide__bullet" data-glide-dir="=2"></button>
+                <button class="glide__bullet" data-glide-dir="=3"></button>
+                <button class="glide__bullet" data-glide-dir="=3"></button>
+            </div>
         </div>
-    </div>
+    </section>
 
     <!-- Certifications -->
     <section class="section section__certifications" data-nav-link="#certifications">
-        <div class="certificates link__cert-ps">
-            <img alt="Photoshop Certificate" src="images/ps.png">
-        </div>
-        <div class="certificates link__cert-ui">
-            <img alt="UI Certificate" src="images/ui.png">
-        </div>
-        <div class="certificates link__cert-ux">
-            <img alt="UX Certificate" src="images/ux.png">
-        </div>
-        <div class="certificates link__cert-indesign">
-            <img alt="InDesign Certificate" src="images/indesign-cert.png">
+
+        <h1 class="section__title">My Certificates</h1>
+        <div class="section__certifications--wrapper">
+            <div class="certificates link__cert-ps">
+                <img alt="Photoshop Certificate" src="images/ps.png">
+            </div>
+            <div class="certificates link__cert-ui">
+                <img alt="UI Certificate" src="images/ui.png">
+            </div>
+            <div class="certificates link__cert-ux">
+                <img alt="UX Certificate" src="images/ux.png">
+            </div>
+            <div class="certificates link__cert-indesign">
+                <img alt="InDesign Certificate" src="images/indesign-cert.png">
+            </div>
         </div>
     </section>
 
     <!-- Contact me -->
     <section class="section section__contact-me" data-nav-link="#contact-me">
         <div class="contact-form-container">
-            <form action="https://formspree.io/f/xjvqpbbg" class="contact-form" method="POST">
+            <form action="https://formspree.io/f/mblyylzo" class="contact-form" method="POST">
                 <label class="contact-form-field">
                     Full Name:
                     <input class="form-input" name="name" required type="text">
@@ -129,11 +161,10 @@
         </div>
         <div class="wrapper__social-icons">
             <img alt="facebook.png" class="social__fb" src="images/facebook.png">
-            <img alt="x-logo.png" class="social__x" src="images/x-logo.png">
             <img alt="linked-in.png" class="social__linkedin" src="images/linked-in.png">
         </div>
         <div class="footer__copyright">
-            &copy; 2023 Emanuil Kostadinov
+            &copy; 2025 Nikol Kostadinova
         </div>
     </section>
 
