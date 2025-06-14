@@ -5,6 +5,9 @@ const allSections = document.querySelectorAll('.section');
 const navbarList = document.querySelector('.navbar__list');
 const btnLearnMore = document.querySelector('.btn__learn-more--wrapper');
 const navHeight = 100;
+const certsDesktopLayout = document.querySelector('.section__certifications--wrapper.desktop-layout');
+const certsMobileLayout = document.querySelector('.glide-certifications.mobile-layout');
+let glideCertifications = null;
 
 const revealSection = (entries) => {
     entries.forEach(entry => {
@@ -83,12 +86,6 @@ function handleRedirect(elementClass, url) {
 }
 
 
-// Certificate redirects
-handleRedirect('.link__cert-ps', 'images/ps-cert.pdf');
-handleRedirect('.link__cert-ui', 'images/ui-cert.pdf');
-handleRedirect('.link__cert-ux', 'images/ux-cert.pdf');
-handleRedirect('.link__cert-indesign', 'images/indesign-cert.pdf');
-
 // Social icon redirects
 handleRedirect('.social__fb', 'https://www.facebook.com/nikol.marinova');
 handleRedirect('.social__linkedin', 'https://www.linkedin.com/in/nikol-kostadinova-7400a7317/');
@@ -156,3 +153,73 @@ document.querySelector('.glide__slides').addEventListener('click', function (e) 
     }
 });
 
+function handleCertificationsGlide() {
+    const minWidthForDesktop = 900;
+
+    if (window.innerWidth < minWidthForDesktop) {
+        if (!glideCertifications) {
+            glideCertifications = new Glide(certsMobileLayout, {
+                type: 'carousel',
+                perView: 1,
+                gap: 20,
+                autoplay: 0,
+                hoverpause: true,
+            });
+            glideCertifications.mount();
+
+            certsMobileLayout.querySelector('.glide__slides').addEventListener('click', function (e) {
+                const target = e.target.closest('.certificates');
+
+                if (!target) return;
+
+                if (target.classList.contains('link__cert-ps')) {
+                    window.open('images/ps-cert.pdf', '_blank');
+                } else if (target.classList.contains('link__cert-ui')) {
+                    window.open('images/ui-cert.pdf', '_blank');
+                } else if (target.classList.contains('link__cert-ux')) {
+                    window.open('images/ux-cert.pdf', '_blank');
+                } else if (target.classList.contains('link__cert-indesign')) {
+                    window.open('images/indesign-cert.pdf', '_blank');
+                }
+            });
+        }
+        certsDesktopLayout.style.display = 'none';
+        certsMobileLayout.style.display = 'block';
+    } else {
+        if (glideCertifications) {
+            glideCertifications.destroy();
+            glideCertifications = null;
+        }
+        certsMobileLayout.style.display = 'none';
+        certsDesktopLayout.style.display = 'flex';
+    }
+}
+
+handleCertificationsGlide();
+window.addEventListener('resize', handleCertificationsGlide);
+
+const psCert = document.querySelector('.link__cert-ps');
+const uiCert = document.querySelector('.link__cert-ui');
+const uxCert = document.querySelector('.link__cert-ux');
+const inDesignCert = document.querySelector('.link__cert-indesign');
+
+if (psCert) {
+    psCert.addEventListener('click', function (e) {
+        window.open('images/ps-cert.pdf', '_blank');
+    })
+}
+if (uiCert) {
+    uiCert.addEventListener('click', function (e) {
+        window.open('images/ui-cert.pdf', '_blank');
+    })
+}
+if (uxCert) {
+    uxCert.addEventListener('click', function (e) {
+        window.open('images/ux-cert.pdf', '_blank');
+    })
+}
+if (inDesignCert) {
+    inDesignCert.addEventListener('click', function (e) {
+        window.open('images/indesign-cert.pdf', '_blank');
+    })
+}

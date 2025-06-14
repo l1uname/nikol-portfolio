@@ -394,42 +394,6 @@ html, body {
     transition: background-color 0.3s ease;
 }
 
-.link__gallery {
-    background-color: #6C3483;
-    color: #fff;
-}
-
-.link__gallery:hover {
-    background-color: #D7BDE2;
-}
-
-.link__notes {
-    background-color: #FFD700;
-    color: #333;
-}
-
-.link__notes:hover {
-    background-color: #FFEB4D;
-}
-
-.link__weather {
-    background-color: #333;
-    color: #fff;
-}
-
-.link__weather:hover {
-    background-color: #595959;
-}
-
-.project__github {
-    font-size: 10px;
-}
-
-.swiper-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .section__certifications {
     display: flex;
@@ -439,16 +403,6 @@ html, body {
     gap: 40px;
     padding: 60px 20px;
 }
-
-.section__certifications--wrapper {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 40px 20px;
-}
-
 
 .certificates img {
     max-width: 100%;
@@ -632,7 +586,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    background-color: transparent;
     overflow: hidden;
     color: #333;
     font-size: 24px;
@@ -676,5 +630,38 @@ html, body {
     }
     .message__about-me {
         flex-direction: column;
+    }
+}
+
+
+.glide-certifications.mobile-layout {
+    display: none;
+}
+
+.section__certifications--wrapper.desktop-layout {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+}
+
+@media (max-width: 899px) {
+    .section__certifications--wrapper.desktop-layout {
+        display: none;
+    }
+    .glide-certifications.mobile-layout {
+        display: block;
+    }
+
+    .glide-certifications .glide__slide {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .glide-certifications .certificates img {
+        max-width: 100%;
+        height: auto;
     }
 }
