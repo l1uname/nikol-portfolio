@@ -764,6 +764,11 @@ body.menu-open {
         height: 100%;
         padding: 80px 0;
     }
+
+    .section__contact-me {
+        height: 100%;
+    }
+
     .message__about-me {
         flex-direction: column;
     }
