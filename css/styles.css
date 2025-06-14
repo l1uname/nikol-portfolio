@@ -160,6 +160,9 @@ body.menu-open {
         flex-wrap: wrap;
         height: auto;
         min-height: 100px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
     }
 
     .navbar__title {

@@ -115,7 +115,11 @@ checkWindowSize();
 const handleSmoothScroll = (e, sectionSelector) => {
     e.preventDefault();
     const section = document.querySelector(sectionSelector);
-    const top = section.getBoundingClientRect().top + window.pageYOffset - navHeight;
+    if (!section) return;
+
+    const navOffset = window.innerWidth >= 900 ? navHeight : 0;
+    const top = section.getBoundingClientRect().top + window.pageYOffset - navOffset;
+
     window.scrollTo({ top, left: 0, behavior: 'smooth' });
 };
 
