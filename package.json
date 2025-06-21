@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@glidejs/glide": "^3.7.1",
     "sharp": "^0.34.2",
     "swiper": "^11.2.8"
   },
