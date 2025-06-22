@@ -187,6 +187,9 @@ document.querySelector('.glide__slides').addEventListener('click', function (e) 
         case classList.contains('project-image--4'):
             window.open('images/project4.jpg', '_blank');
             break;
+        case classList.contains('project-image--5'):
+            window.open('images/brochure.jpg', '_blank');
+            break;
     }
 });
 
